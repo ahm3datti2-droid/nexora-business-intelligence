@@ -81,9 +81,12 @@ export default function DataImportClient({ initialLogs }: { initialLogs: ImportL
             Download CSV template
           </button>
           <form onSubmit={upload} className="space-y-3">
-            <input type="file" accept=".csv,text/csv" required
-              onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-              className="w-full rounded-lg border border-[#142B55] bg-[#07111F] px-3 py-2 text-sm text-white" />
+            <label className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#2878FF] px-3 py-2.5 text-sm font-semibold text-white">
+              {file ? `📄 ${file.name}` : "Choose CSV file…"}
+              <input type="file" accept=".csv,text/csv" required
+                onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+                className="hidden" />
+            </label>
             <button disabled={loading || !file} className="w-full rounded-lg bg-[#2878FF] py-2.5 font-semibold text-white disabled:opacity-50">
               {loading ? "Importing…" : "Import CSV"}
             </button>

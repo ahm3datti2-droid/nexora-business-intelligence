@@ -15,6 +15,7 @@ const NAV = [
   { href: "/decisions", en: "Decisions", ar: "القرارات" },
   { href: "/reports", en: "Reports", ar: "التقارير" },
   { href: "/settings", en: "Settings", ar: "الإعدادات" },
+  { href: "/settings/data", en: "Data Import", ar: "استيراد البيانات" },
 ];
 
 export async function AppShell({

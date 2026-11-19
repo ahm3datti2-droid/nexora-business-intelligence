@@ -23,7 +23,7 @@ export default async function DataImportPage() {
     take: 20,
   });
   return (
-    <AppShell active="/settings">
+    <AppShell active="/settings/data">
       <DataImportClient
         initialLogs={logs.map((l) => ({
           id: l.id,

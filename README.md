@@ -66,7 +66,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — modules, multi-tenancy isol
 
 ## Deploying to Vercel
 
-1. Push this repo to GitHub (see below — **not done yet**).
+1. Push this repo to GitHub — done: https://github.com/ahm3datti2-droid/nexora-business-intelligence.
 2. In Vercel: Import Project → select the repo → framework preset **Next.js**.
 3. Set environment variables: `DATABASE_URL`, `JWT_SECRET`, optionally `OPENAI_API_KEY`.
 4. Provision PostgreSQL (Vercel Postgres / Neon / Supabase), then run `npx prisma db push` and `npm run db:seed` against it (or seed via `npx prisma db seed` in a one-off run).

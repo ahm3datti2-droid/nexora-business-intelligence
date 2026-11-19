@@ -29,15 +29,14 @@ npm install
 cp .env.example .env
 # Edit .env: set DATABASE_URL (PostgreSQL) and JWT_SECRET (long random string)
 
-# 3. Create schema + seed the labelled demo dataset
+# 3. Create schema
 npx prisma db push
-npm run db:seed
 
 # 4. Run
 npm run dev        # http://localhost:3000
 ```
 
-Demo login: **demo@nexora.app / demo1234** — the demo dataset is labelled "Demo data" everywhere until you import your own data or clear it (Settings → Data).
+Create a workspace at `/register` — every workspace starts empty; import your own sales via Settings → Data & CSV import.
 
 ## Environment variables
 
@@ -58,7 +57,7 @@ Demo login: **demo@nexora.app / demo1234** — the demo dataset is labelled "Dem
 | `npm run lint` | ESLint (Next core-web-vitals + TypeScript) |
 | `npx prisma validate` / `npx prisma generate` | Schema validation / client generation |
 | `npm run db:push` | Push schema to the database |
-| `npm run db:seed` | Seed the labelled demo dataset |
+| `npm run db:seed` | No-op — demo seeding was removed by the owner (2026-11-19) |
 
 ## Architecture
 
@@ -86,4 +85,3 @@ The Python service in `analytics/` is **optional** and is not part of the Vercel
 - Dashboard numbers are Prisma aggregates over real rows — no hardcoded constants.
 - The optimizer reports OPTIMAL only when the simplex optimality condition holds.
 - AI answers are labelled `ai-generated` or `calculated`; without an LLM key no output pretends to be from an LLM.
-- Demo data is labelled "Demo data" in the UI and can be cleared; importing real data clears the flag.

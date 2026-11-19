@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("demo@nexora.app");
-  const [password, setPassword] = useState("demo1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +35,6 @@ export default function LoginPage() {
       <form onSubmit={submit} className="w-full max-w-md rounded-2xl border border-[#142B55] bg-[#0D1B2D] p-6 md:p-8">
         <div className="text-2xl font-black">NEX<span className="text-[#2878FF]">ORA</span></div>
         <h1 className="mt-4 text-xl font-bold">Sign in</h1>
-        <p className="mt-1 text-sm text-[#8B9BB2]">Demo account: demo@nexora.app / demo1234</p>
         <label className="mt-6 block text-sm font-medium">Email</label>
         <input
           type="email" required value={email} onChange={(e) => setEmail(e.target.value)}

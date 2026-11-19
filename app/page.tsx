@@ -51,12 +51,9 @@ export default async function LandingPage() {
               {t("Start free — create your workspace", "ابدأ مجاناً — أنشئ مساحة عملك")}
             </Link>
             <Link href="/login" className="rounded-xl border border-[#142B55] bg-[#0D1B2D] px-6 py-3 font-semibold text-white">
-              {t("Try the demo workspace", "جرّب مساحة العرض التجريبية")}
+              {t("Sign in", "تسجيل الدخول")}
             </Link>
           </div>
-          <p className="mt-4 text-sm text-[#8B9BB2]">
-            {t("Demo login: demo@nexora.app / demo1234 — clearly labelled demo data.", "دخول العرض: demo@nexora.app / demo1234 — بيانات تجريبية موسومة بوضوح.")}
-          </p>
         </section>
 
         <section className="grid gap-4 md:grid-cols-3">

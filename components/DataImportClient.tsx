@@ -66,7 +66,7 @@ export default function DataImportClient({ initialLogs }: { initialLogs: ImportL
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
         <Card title="Upload sales CSV">
           <p className="mb-3 text-xs text-[#8B9BB2]">
-            Required columns: date (YYYY-MM-DD), product_sku, product_name, customer_name, quantity, unit_price, unit_cost, channel, external_ref
+            Required columns: date (YYYY-MM-DD), product_sku, product_name, customer_name, quantity, unit_price, unit_cost. Optional: channel (default store), external_ref (unique invoice/order number per row, for duplicate detection).
           </p>
           <button
             onClick={() => {

@@ -4,7 +4,10 @@ import { getPrisma } from "@/lib/prisma";
 import { getSessionUser, hasRole } from "@/lib/auth";
 
 // CSV sales import.
-// Expected header: date,product_sku,product_name,customer_name,quantity,unit_price,unit_cost,channel,external_ref
+// Expected header: date,product_sku,product_name,customer_name,quantity,unit_price,unit_cost
+// Optional columns: channel (defaults to "store"), external_ref (unique per
+// row, e.g. invoice number — used for duplicate detection; when absent,
+// duplicates fall back to same date + customer + product + quantity + amount).
 // - Validates every row with zod.
 // - Duplicate detection: same organizationId + external_ref (when provided),
 //   otherwise same date + customer + product + quantity + amount.
@@ -65,8 +68,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "CSV is empty or has no data rows." }, { status: 400 });
   }
   const header = rows[0].map((h) => h.trim().toLowerCase());
-  const expected = ["date", "product_sku", "product_name", "customer_name", "quantity", "unit_price", "unit_cost", "channel", "external_ref"];
-  const missing = expected.filter((h) => !header.includes(h));
+  // channel and external_ref are optional columns (the row schema already
+  // defaults channel to "store" and external_ref to undefined), so a file
+  // without them must not be rejected here.
+  const required = ["date", "product_sku", "product_name", "customer_name", "quantity", "unit_price", "unit_cost"];
+  const missing = required.filter((h) => !header.includes(h));
   if (missing.length) {
     return NextResponse.json({ error: `Missing columns: ${missing.join(", ")}` }, { status: 400 });
   }

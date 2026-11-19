@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Build output
+.next/
+out/
+dist/
+
+# Environment & secrets — NEVER commit real credentials
+.env
+.env.*
+!.env.example
+
+# Prisma
+prisma/*.db
+
+# Misc
+.DS_Store
+*.log
+.vercel
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# TypeScript
+*.tsbuildinfo

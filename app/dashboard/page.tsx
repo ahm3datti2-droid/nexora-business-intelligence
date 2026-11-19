@@ -1,6 +1,7 @@
 import { AppShell } from "@/components/AppShell";
 import { Card, DbNotConfigured, DemoBadge, StatCard } from "@/components/ui";
 import { RevenueChart } from "@/components/RevenueChart";
+import Link from "next/link";
 import { getPrisma, isDbConfigured } from "@/lib/prisma";
 import { getDict } from "@/lib/i18n";
 import { lang, requireOrg } from "@/lib/server";
@@ -85,6 +86,20 @@ export default async function DashboardPage() {
       <h1 className="text-2xl font-black">{t.dashboard} — {org.name}</h1>
       <p className="mt-1 text-sm text-[#8B9BB2]">{org.plan} · {org.currency}</p>
       <div className="mt-4">{org.demoData && <DemoBadge lang={l} />}</div>
+
+      {sales.length === 0 && (
+        <div className="mt-4 rounded-2xl border border-[#2878FF] bg-[#0D1B2D] p-5">
+          <h2 className="text-lg font-bold">{l === "ar" ? "لا توجد بيانات بعد" : "No data yet"}</h2>
+          <p className="mt-1 text-sm text-[#8B9BB2]">
+            {l === "ar"
+              ? "ارفع ملف مبيعاتك (CSV) وستظهر كل الأرقام والرسوم البيانية هنا فوراً."
+              : "Upload your sales file (CSV) and all the numbers and charts will appear here right away."}
+          </p>
+          <Link href="/settings/data" className="mt-3 inline-block rounded-lg bg-[#2878FF] px-4 py-2.5 text-sm font-semibold text-white">
+            {l === "ar" ? "ارفع ملف CSV" : "Upload CSV file"}
+          </Link>
+        </div>
+      )}
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <StatCard label={t.totalRevenue} value={money(revenue, org.currency)} sub={growth === null ? "—" : `${growth >= 0 ? "+" : ""}${growth.toFixed(1)}% vs last month`} />

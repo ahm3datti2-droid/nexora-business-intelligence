@@ -12,9 +12,9 @@ const FEATURES = [
 ];
 
 const PLANS = [
-  { name: "STARTER", price: "$29/mo", en: "Basic business analytics.", ar: "تحليلات أعمال أساسية.", feats: ["Executive dashboard", "Sales & inventory", "CSV import"] },
-  { name: "PROFESSIONAL", price: "$79/mo", en: "Advanced analytics, reports and forecasting.", ar: "تحليلات متقدمة وتقارير وتنبؤ.", feats: ["Everything in Starter", "AI Copilot", "Decision center", "Scheduled reports"] },
-  { name: "ENTERPRISE", price: "Custom", en: "Optimization, AI, integrations and org management.", ar: "تحسين وذكاء اصطناعي وتكاملات وإدارة مؤسسات.", feats: ["Everything in Professional", "Optimization engine", "API integrations", "Super admin panel"] },
+  { name: "STARTER", price: "Free", en: "Basic business analytics.", ar: "تحليلات أعمال أساسية.", feats: ["Executive dashboard", "Sales & inventory", "CSV import"] },
+  { name: "PROFESSIONAL", price: "Free", en: "Advanced analytics, reports and forecasting.", ar: "تحليلات متقدمة وتقارير وتنبؤ.", feats: ["Everything in Starter", "AI Copilot", "Decision center", "Scheduled reports"] },
+  { name: "ENTERPRISE", price: "Free", en: "Optimization, AI, integrations and org management.", ar: "تحسين وذكاء اصطناعي وتكاملات وإدارة مؤسسات.", feats: ["Everything in Professional", "Optimization engine", "API integrations", "Super admin panel"] },
 ];
 
 export default async function LandingPage() {
@@ -67,6 +67,9 @@ export default async function LandingPage() {
 
         <section className="py-16">
           <h2 className="text-center text-3xl font-black">{t("Plans", "الباقات")}</h2>
+          <p className="mt-3 text-center text-sm text-[#8B9BB2]">
+            {t("Free for everyone during the launch period — paid plans start later.", "مجاني للجميع خلال فترة الإطلاق — الباقات المدفوعة تبدأ لاحقاً.")}
+          </p>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {PLANS.map((p) => (
               <div key={p.name} className="rounded-2xl border border-[#142B55] bg-[#0D1B2D] p-6">
